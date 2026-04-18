@@ -1,0 +1,137 @@
+:root {
+  color-scheme: dark;
+  --bg: #12151a;
+  --panel: #1f2630;
+  --panel-2: #1a2028;
+  --accent: #51b8ff;
+  --text: #e9edf3;
+  --muted: #9fb2c8;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0e1116, #141923 45%, #10141b);
+  color: var(--text);
+}
+
+header {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #2b3644;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid #2b3440;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.group {
+  background: var(--panel-2);
+  border: 1px solid #2a3441;
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 0.55rem;
+  color: var(--muted);
+}
+
+input,
+button {
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+button {
+  border: none;
+  background: linear-gradient(135deg, #57c3ff, #3a82ff);
+  color: white;
+  border-radius: 8px;
+  padding: 0.6rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(1.08);
+}
+
+.preview-wrap {
+  position: relative;
+  margin-top: 0.7rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: black;
+  max-height: 480px;
+}
+
+video {
+  width: 100%;
+  max-height: 480px;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  left: 50%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 36px;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 75%);
+  pointer-events: none;
+  white-space: pre;
+}
+
+.transport {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr)) 1fr;
+  gap: 0.5rem;
+  align-items: end;
+  margin-top: 0.8rem;
+}
+
+#downloadLink {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #8fd0ff;
+  font-weight: 600;
+}
+
+@media (max-width: 740px) {
+  .transport {
+    grid-template-columns: 1fr;
+  }
+}
