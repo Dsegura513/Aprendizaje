@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aprendizaje Studio - Editor de Video</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Aprendizaje Studio</h1>
+    <p>Editor de video en el navegador con recorte, filtros, texto y exportación.</p>
+  </header>
+
+  <main>
+    <section class="panel media-panel">
+      <h2>1) Carga y previsualización</h2>
+      <input id="videoInput" type="file" accept="video/*" />
+      <div class="preview-wrap" id="previewWrap">
+        <video id="videoPreview" controls playsinline></video>
+        <div id="textOverlay" class="overlay"></div>
+      </div>
+      <div class="transport">
+        <button id="playBtn">▶ Reproducir</button>
+        <button id="pauseBtn">⏸ Pausar</button>
+        <button id="stopBtn">⏹ Detener</button>
+        <label>Tiempo: <span id="timeLabel">0.00 / 0.00 s</span></label>
+      </div>
+      <label for="scrubber">Línea de tiempo</label>
+      <input id="scrubber" type="range" min="0" max="0" step="0.01" value="0" />
+    </section>
+
+    <section class="panel grid">
+      <h2>2) Edición principal</h2>
+      <div class="group">
+        <h3>Recorte</h3>
+        <label>Inicio (s)
+          <input id="trimStart" type="number" min="0" value="0" step="0.1" />
+        </label>
+        <label>Fin (s)
+          <input id="trimEnd" type="number" min="0" value="0" step="0.1" />
+        </label>
+        <button id="applyTrimBtn">Aplicar recorte</button>
+      </div>
+
+      <div class="group">
+        <h3>Audio y velocidad</h3>
+        <label>Volumen
+          <input id="volume" type="range" min="0" max="1" step="0.01" value="1" />
+        </label>
+        <label>Velocidad
+          <input id="playbackRate" type="range" min="0.25" max="2" step="0.05" value="1" />
+          <span id="rateValue">1.00x</span>
+        </label>
+      </div>
+
+      <div class="group">
+        <h3>Filtros</h3>
+        <label>Brillo
+          <input id="brightness" type="range" min="0" max="2" step="0.01" value="1" />
+        </label>
+        <label>Contraste
+          <input id="contrast" type="range" min="0" max="2" step="0.01" value="1" />
+        </label>
+        <label>Saturación
+          <input id="saturate" type="range" min="0" max="3" step="0.01" value="1" />
+        </label>
+        <label>Sepia
+          <input id="sepia" type="range" min="0" max="1" step="0.01" value="0" />
+        </label>
+        <label>Escala de grises
+          <input id="grayscale" type="range" min="0" max="1" step="0.01" value="0" />
+        </label>
+      </div>
+
+      <div class="group">
+        <h3>Texto superpuesto</h3>
+        <label>Contenido
+          <input id="overlayText" type="text" placeholder="Escribe un título" />
+        </label>
+        <label>Tamaño (px)
+          <input id="overlaySize" type="number" min="12" max="96" value="36" />
+        </label>
+        <label>Color
+          <input id="overlayColor" type="color" value="#ffffff" />
+        </label>
+        <label>Posición X (%)
+          <input id="overlayX" type="range" min="0" max="100" value="50" />
+        </label>
+        <label>Posición Y (%)
+          <input id="overlayY" type="range" min="0" max="100" value="90" />
+        </label>
+      </div>
+    </section>
+
+    <section class="panel export-panel">
+      <h2>3) Exportar</h2>
+      <p>La exportación genera un archivo WebM con los ajustes aplicados en la vista previa.</p>
+      <button id="exportBtn">Exportar clip editado</button>
+      <p id="exportStatus">Sin exportar.</p>
+      <a id="downloadLink" hidden>Descargar video</a>
+      <canvas id="renderCanvas" hidden></canvas>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
